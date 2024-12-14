@@ -1,0 +1,86 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  width: 380px;
+  margin-top: 26px;
+  margin-left: 146px;
+}
+
+label,
+input,
+button {
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.form > label {
+  margin-bottom: 8px;
+}
+
+.form > label > input {
+  display: block;
+
+  width: 360px;
+  height: 40px;
+  padding-inline: 4px;
+  padding-block: 4px;
+  margin-top: 4px;
+  border: 1px solid #808080;
+  border-radius: 4px;
+}
+.form > fieldset > label {
+  width: 104px;
+  height: 32px;
+}
+
+fieldset {
+  border-radius: 4px;
+  stroke-width: 1px;
+  stroke: #808080;
+
+  padding-top: 10px;
+
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  text-align: center;
+
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  flex-direction: row;
+  gap: 48px;
+  height: 64px;
+}
+
+fieldset > legend {
+  font-weight: 400;
+  font-size: 16px;
+  margin-inline-start: 28px;
+  line-height: 150%;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+
+  text-align: left;
+}
+
+.form button {
+  margin-top: 8px;
+  width: 360px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  padding-block: 8px;
+  background-color: #4e75ff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form button:hover,
+.form button:focus {
+  background-color: #6c8cff;
+}
