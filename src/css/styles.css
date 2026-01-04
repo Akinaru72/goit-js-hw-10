@@ -1,20 +1,18 @@
-@import url('./1-timer.css');
-@import url('./2-snackbar.css');
+/* @import url('./1-timer.css');
+@import url('./2-snackbar.css'); */
 
 body {
   font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
   font-size: 16px;
-  line-height: 150%;
+  line-height: 1.5;
   letter-spacing: 0.04em;
   color: #2e2f42;
 }
 
 a {
   text-decoration: none;
-  font-size: 16px;
-  line-height: 150%;
-  letter-spacing: 0.04em;
-  color: #2e2f42;
+  display: block;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -28,3 +26,208 @@ a:hover,
 ul li > a:hover {
   color: rgb(48, 166, 168);
 }
+
+/* ---------------------timer---------------------- */
+
+#datetime-picker {
+  border: 1px solid #808080;
+  border-radius: 4px;
+  width: 272px;
+  height: 38px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+  padding-left: 16px;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 36px;
+  margin-left: 156px;
+  margin-bottom: 32px;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#datetime-picker:hover {
+  border-color: #000000;
+}
+
+#datetime-picker:active {
+  border-color: #4e75ff;
+  color: #000000;
+}
+
+#datetime-picker.disable {
+  border-color: #fafafa;
+  color: #808080;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+[data-start] {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  border-radius: 8px;
+  width: 75px;
+  height: 40px;
+  background-color: #4e75ff;
+  border: none;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-start]:hover {
+  background-color: #6c8cff;
+}
+
+[data-start].disable {
+  background-color: #cfcfcf;
+  color: #989898;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.timer {
+  margin-left: 156px;
+  display: flex;
+  gap: 24px;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 78px;
+}
+
+.value {
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+
+.label {
+  font-size: 16px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.iziToast {
+  margin-top: 60px !important;
+  margin-right: 156px !important;
+}
+
+.flatpickr-day.today {
+  border-color: #4e75ff !important;
+}
+
+/* ---------------------end timer------------------ */
+/* ---------------------snacbar-------------------- */
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  margin-left: 156px;
+  margin-top: 36px;
+}
+
+form > label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+input[name='delay'] {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  margin: 0;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  width: 344px;
+  height: 40px;
+  padding-left: 16px;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input[name='delay']:hover {
+  border-color: #000000;
+}
+
+input[name='delay']:focus {
+  border-color: #4e75ff;
+  outline: none;
+}
+
+fieldset {
+  display: flex;
+  padding-left: 54px;
+  padding-top: 19px;
+  padding-bottom: 14px;
+  padding-right: 48px;
+  gap: 48px;
+  border-radius: 4px;
+  border: 1px solid #808080;
+  margin-bottom: 24px;
+  margin-left: 0;
+  margin-right: 0;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+fieldset:hover,
+fieldset:active {
+  border-color: #000000;
+}
+
+legend {
+  margin-left: -22px;
+}
+
+fieldset label {
+  height: 20px;
+  display: flex;
+  gap: 14px;
+}
+
+fieldset input {
+  border: 1px solid #757575;
+  border-radius: 14px;
+  width: 20px;
+  height: 20px;
+}
+
+form button {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
+  border-radius: 8px;
+  width: 360px;
+  height: 40px;
+  background-color: #4e75ff;
+  border: none;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+form button:hover {
+  background-color: #6c8cff;
+}
+
+/* ---------------------end snacbar---------------- */

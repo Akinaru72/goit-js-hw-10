@@ -4,48 +4,15 @@ import 'flatpickr/dist/flatpickr.min.css';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
-const startBtn = document.querySelector('[data-start]');
-const selector = document.querySelector('#datetime-picker');
+const btnEl = document.querySelector('[data-start]');
+const inputEl = document.querySelector('#datetime-picker');
 
 const timerDays = document.querySelector('[data-days]');
 const timerHours = document.querySelector('[data-hours]');
 const timerMinutes = document.querySelector('[data-minutes]');
 const timerSeconds = document.querySelector('[data-seconds]');
 
-startBtn.disabled = true;
 let userSelectedDate;
-let countdownInterval;
-
-const options = {
-  enableTime: true,
-  time_24hr: true,
-  defaultDate: new Date(),
-  minuteIncrement: 1,
-  onClose(selectedDates) {
-    const selectedDate = selectedDates[0];
-    if (selectedDate <= new Date()) {
-      iziToast.error({
-        backgroundColor: '#ef4040',
-        message: 'Please choose a date in the future',
-        messageColor: 'white',
-        messageSize: '20',
-        position: 'topRight',
-        close: true,
-        displayMode: 2,
-      });
-      startBtn.disabled = true;
-    } else {
-      userSelectedDate = selectedDate;
-      startBtn.disabled = false;
-    }
-  },
-};
-
-flatpickr(selector, options);
-
-function addLeadingZero(value) {
-  return String(value).padStart(2, '0');
-}
 
 function convertMs(ms) {
   const second = 1000;
@@ -61,39 +28,75 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
-startBtn.addEventListener('click', startCountTimer);
+btnEl.classList.add('disable');
 
-function startCountTimer() {
-  startBtn.disabled = true;
-  selector.disabled = true;
+const options = {
+  enableTime: true,
+  time_24hr: true,
+  defaultDate: new Date(),
+  minuteIncrement: 1,
+  onClose(selectedDates) {
+    userSelectedDate = selectedDates[0];
+    if (userSelectedDate <= new Date()) {
+      iziToast.error({
+        backgroundColor: '#ef4040',
+        message: 'Please choose a date in the future',
+        messageColor: 'white',
+        messageSize: '20',
+        position: 'topRight',
+        close: true,
+        displayMode: 2,
+      });
+      btnEl.classList.add('disable');
+    } else {
+      btnEl.classList.remove('disable');
+    }
+    console.log(userSelectedDate);
+  },
+};
 
-  countdownInterval = setInterval(() => {
-    const currentTime = new Date();
-    const timeDifference = userSelectedDate - currentTime;
+function addZerro(value) {
+  return String(value).padStart(2, '0');
+}
 
-    if (timeDifference <= 0) {
-      // Зупиняємо інтервал
-      clearInterval(countdownInterval);
+function updateTimer(ms) {
+  const time = convertMs(ms);
+  timerDays.textContent = addZerro(time.days);
+  timerHours.textContent = addZerro(time.hours);
+  timerMinutes.textContent = addZerro(time.minutes);
+  timerSeconds.textContent = addZerro(time.seconds);
+}
+
+const onBtnClick = () => {
+  btnEl.classList.add('disable');
+  inputEl.classList.add('disable');
+
+  let letIntervalId = null;
+  let diff;
+
+  letIntervalId = setInterval(() => {
+    diff = userSelectedDate - Date.now();
+
+    if (diff <= 0) {
+      clearInterval(letIntervalId);
       updateTimer(0);
-      selector.disabled = false;
+      inputEl.classList.remove('disable');
 
       iziToast.success({
         title: 'Done',
         message: 'Countdown finished!',
         timeout: 3000,
+        messageSize: '20',
+        position: 'topRight',
+        close: true,
+        displayMode: 2,
       });
-
       return;
     }
-
-    updateTimer(timeDifference);
+    updateTimer(diff);
   }, 1000);
-}
+};
 
-function updateTimer(ms) {
-  const time = convertMs(ms);
-  timerDays.textContent = addLeadingZero(time.days);
-  timerHours.textContent = addLeadingZero(time.hours);
-  timerMinutes.textContent = addLeadingZero(time.minutes);
-  timerSeconds.textContent = addLeadingZero(time.seconds);
-}
+btnEl.addEventListener('click', onBtnClick);
+
+flatpickr('#datetime-picker', options);
