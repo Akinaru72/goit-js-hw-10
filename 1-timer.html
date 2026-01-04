@@ -9,33 +9,30 @@
     <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/modulepreload-polyfill-B5Qt9EMX.js">
     <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/vendor-BbbuE1sJ.js">
     <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/vendor-CZjNVMTf.css">
-    <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/styles-C7v-qJgs.css">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/styles-DV2Kgpfb.css">
   </head>
   <body>
     <main>
       <a href="./index.html">Go Back</a>
-      <div class="container">
-        <div class="control-panel">
-          <input type="text" id="datetime-picker" />
-          <button type="button" data-start disabled>Start</button>
+      <input type="text" id="datetime-picker" />
+      <button type="button" data-start>Start</button>
+
+      <div class="timer">
+        <div class="field">
+          <span class="value" data-days>00</span>
+          <span class="label">Days</span>
         </div>
-        <div class="timer">
-          <div class="field">
-            <span class="value" data-days>00</span>
-            <span class="label">DAYS</span>
-          </div>
-          <div class="field">
-            <span class="value" data-hours>00</span>
-            <span class="label">HOURS</span>
-          </div>
-          <div class="field">
-            <span class="value" data-minutes>00</span>
-            <span class="label">MINUTES</span>
-          </div>
-          <div class="field">
-            <span class="value" data-seconds>00</span>
-            <span class="label">SECONDS</span>
-          </div>
+        <div class="field">
+          <span class="value" data-hours>00</span>
+          <span class="label">Hours</span>
+        </div>
+        <div class="field">
+          <span class="value" data-minutes>00</span>
+          <span class="label">Minutes</span>
+        </div>
+        <div class="field">
+          <span class="value" data-seconds>00</span>
+          <span class="label">Seconds</span>
         </div>
       </div>
     </main>
