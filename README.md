@@ -18,7 +18,7 @@ files and to the live page on GitHub Pages.
 
 The folder and file structure in the `src` folder should look as follows:
 
-![Project preview](assets/goit-09.png)
+![Project preview](assets/goit-js-10.jpeg)
 
 ---
 

@@ -19,7 +19,7 @@
 
 Структура папок і файлів проєкту в папці `src` має виглядати наступним чином:
 
-![Project preview](assets/goit-09.png)
+![Project preview](assets/goit-js-10.jpeg)
 
 ---
 
